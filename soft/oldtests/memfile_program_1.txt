@@ -1,0 +1,108 @@
+//00000000 <_start>:
+   0c000046        // jal     118 <f_delay>
+   24040005        // li      a0,5
+   0c00004b        // jal     12c <f_write_cmd>
+   24040040        // li      a0,64
+   0c000055        // jal     154 <f_write_data>
+   24040032        // li      a0,50
+   0c000055        // jal     154 <f_write_data>
+   24040007        // li      a0,7
+   0c000055        // jal     154 <f_write_data>
+   24040007        // li      a0,7
+   0c000055        // jal     154 <f_write_data>
+   2404001e        // li      a0,30
+   0c000055        // jal     154 <f_write_data>
+   24040023        // li      a0,35
+   0c000055        // jal     154 <f_write_data>
+   2404008f        // i      a0,143
+   0c000055        // jal     154 <f_write_data>
+   2404001e        // li      a0,30
+   0c000055        // jal     154 <f_write_data>
+   24040000        // li      a0,0
+   0c00004b        // jal     12c <f_write_cmd>
+   2404004c        // li      a0,76
+   0c00004b        // jal     12c <f_write_cmd>
+   2404005a        // li      a0,90
+   0c000055       // jal     154 <f_write_data>
+   24040000       //  li      a0,0
+   0c00004b       //  jal     12c <f_write_cmd>
+   2404005d        // li      a0,93
+   0c000055        // jal     154 <f_write_data>
+   24040003        // li      a0,3
+   0c000055        // jal     154 <f_write_data>
+   24040001        // li      a0,1
+   0c00004b        // jal     12c <f_write_cmd>
+   24040046        // li      a0,70
+   0c000055        // jal     154 <f_write_data>
+   24040000        // li      a0,0
+   0c000055       //  jal     154 <f_write_data>
+   24040000        // li      a0,0
+   0c00004b       //  jal     12c <f_write_cmd>
+   24040044        // li      a0,68
+   0c000055        // jal     154 <f_write_data>
+   24040000        // li      a0,0
+   0c000055        // jal     154 <f_write_data>
+   24040000        // li      a0,0
+   0c000055        // jal     154 <f_write_data>
+   2404007f        // li      a0,127
+   0c00004b        // jal     12c <f_write_cmd>
+   24040042        // li      a0,66
+   0c000055        // jal     154 <f_write_data>
+   24040048        // li      a0,72
+   0c000055        // jal     154 <f_write_data>
+   24040065        // li      a0,101
+   0c000055        // jal     154 <f_write_data>
+   2404006c        // li      a0,108
+   0c000055        // jal     154 <f_write_data>
+   2404006c        // li      a0,108
+   0c000055        // jal     154 <f_write_data>
+   2404006f        // li      a0,111
+   0c000055        // jal     154 <f_write_data>
+   24040020        // li      a0,32
+   0c000055        // jal     154 <f_write_data>
+   2404004d        // li      a0,77
+   0c000055        // jal     154 <f_write_data>
+   24040049        // li      a0,73
+   0c000055        // jal     154 <f_write_data>
+   24040050        // li      a0,80
+   0c000055        // jal     154 <f_write_data>
+   24040053        // li      a0,83
+
+//00000110 <_stop>:
+   08000044        // j        110 <_stop>
+   00000000        // nop
+
+//00000118 <f_delay>:
+   2084ffff        // addi    a0,a0,-1
+   1404fffe        // bne     zero,a0,118 <f_delay>
+   00000000        // nop
+   03e00008        // jr      ra
+   00000000        // nop
+
+//0000012c <f_write_cmd>:
+   3c080003        // lui     t0,0x3
+   308400ff        // andi    a0,a0,0xff
+   01044025        // or      t0,t0,a0
+   ac080000        // sw      t0,0(zero)
+
+//0000013c <___wcmd_check_complete>:
+   8c090004        // lw      t1,4(zero)
+   00000000        // nop
+   0521fffd        // bgez    t1,13c <___wcmd_check_complete>
+   00000000        // nop
+   03e00008        // jr      ra
+   00000000        // nop
+
+//00000154 <f_write_data>:
+   3c080002        // lui     t0,0x2
+   308400ff        // andi    a0,a0,0xff
+   01044025        // or      t0,t0,a0
+   ac080000        // sw      t0,0(zero)
+
+//00000164 <___rcmd_check_complete>:
+   8c090004        // lw      t1,4(zero)
+   00000000        // nop
+   0521fffd        // bgez    t1,164 <___rcmd_check_complete>
+   00000000        // nop
+   03e00008        // jr      ra
+   00000000        // nop

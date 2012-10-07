@@ -1,0 +1,151 @@
+// Disassembly of section .text:
+
+// 00000000 <_ftext>:
+  241dffff  //   0:      li     sp,-1
+  0c000053  //   4:      jal    14c <main>
+  241c0000  //   8:      li     gp,0
+  ac020018  //   c:      sw     v0,24(zero)
+
+// 00000010 <_stop>:
+  08000004  //  10:      j      10 <_stop>
+  00000000  //  14:      nop
+
+// 00000018 <leds(int)>:
+  308400ff  //  18:      andi   a0,a0,0xff
+  ac040018  //  1c:      sw     a0,24(zero)
+  03e00008  //  20:      jr     ra
+  00000000  //  24:      nop
+
+// 00000028 <delay(int)>:
+  2484ffff  //  28:      addiu  a0,a0,-1
+  1480fffe  //  2c:      bnez   a0,28 <delay(int)>
+  00000000  //  30:      nop
+  03e00008  //  34:      jr     ra
+  00000000  //  38:      nop
+
+// 0000003c <clamp(int, int, int)>:
+  0085182a  //  3c:      slt    v1,a0,a1
+  14600004  //  40:      bnez   v1,54 <clamp(int, int, int)+0x18>
+  00a01021  //  44:      move   v0,a1
+  0086182a  //  48:      slt    v1,a0,a2
+  14600003  //  4c:      bnez   v1,5c <clamp(int, int, int)+0x20>
+  00c01021  //  50:      move   v0,a2
+  03e00008  //  54:      jr     ra
+  00000000  //  58:      nop
+  03e00008  //  5c:      jr     ra
+  00801021  //  60:      move   v0,a0
+
+// 00000064 <eng_13_ctrl(int, int)>:
+  27bdffe0  //  64:      addiu  sp,sp,-32
+  afb10018  //  68:      sw     s1,24(sp)
+  24060200  //  6c:      li     a2,512
+  00808821  //  70:      move   s1,a0
+  00a02021  //  74:      move   a0,a1
+  00002821  //  78:      move   a1,zero
+  afbf001c  //  7c:      sw     ra,28(sp)
+  0c00000f  //  80:      jal    3c <clamp(int, int, int)>
+  afb00014  //  84:      sw     s0,20(sp)
+  02202021  //  88:      move   a0,s1
+  00002821  //  8c:      move   a1,zero
+  24060200  //  90:      li     a2,512
+  0c00000f  //  94:      jal    3c <clamp(int, int, int)>
+  00408021  //  98:      move   s0,v0
+  00021400  //  9c:      sll    v0,v0,0x10
+  8fbf001c  //  a0:      lw     ra,28(sp)
+  00508025  //  a4:      or     s0,v0,s0
+  ac100010  //  a8:      sw     s0,16(zero)
+  8fb10018  //  ac:      lw     s1,24(sp)
+  8fb00014  //  b0:      lw     s0,20(sp)
+  03e00008  //  b4:      jr     ra
+  27bd0020  //  b8:      addiu  sp,sp,32
+
+// 000000bc <eng_24_ctrl(int, int)>:
+  27bdffe0  //  bc:      addiu  sp,sp,-32
+  afb10018  //  c0:      sw     s1,24(sp)
+  24060200  //  c4:      li     a2,512
+  00808821  //  c8:      move   s1,a0
+  00a02021  //  cc:      move   a0,a1
+  00002821  //  d0:      move   a1,zero
+  afbf001c  //  d4:      sw     ra,28(sp)
+  0c00000f  //  d8:      jal    3c <clamp(int, int, int)>
+  afb00014  //  dc:      sw     s0,20(sp)
+  02202021  //  e0:      move   a0,s1
+  00002821  //  e4:      move   a1,zero
+  24060200  //  e8:      li     a2,512
+  0c00000f  //  ec:      jal    3c <clamp(int, int, int)>
+  00408021  //  f0:      move   s0,v0
+  00021400  //  f4:      sll    v0,v0,0x10
+  8fbf001c  //  f8:      lw     ra,28(sp)
+  00508025  //  fc:      or     s0,v0,s0
+  ac100014  // 100:      sw     s0,20(zero)
+  8fb10018  // 104:      lw     s1,24(sp)
+  8fb00014  // 108:      lw     s0,20(sp)
+  03e00008  // 10c:      jr     ra
+  27bd0020  // 110:      addiu  sp,sp,32
+
+// 00000114 <adc_read(int)>:
+  ac04000c  // 114:      sw     a0,12(zero)
+  8c02000c  // 118:      lw     v0,12(zero)
+  00000000  // 11c:      nop
+  00000000  // 120:      bltz   v0,118 <adc_read(int)+0x4>
+  00000000  // 124:      nop
+  03e00008  // 128:      jr     ra
+  00000000  // 12c:      nop
+
+// 00000130 <wait4event()>:
+  8c020020  // 130:      lw     v0,32(zero)
+  00000000  // 134:      nop
+  00000000  // 138:      beqz   v0,130 <wait4event()>
+  24020001  // 13c:      li     v0,1
+  ac020020  // 140:      sw     v0,32(zero)
+  03e00008  // 144:      jr     ra
+  00000000  // 148:      nop
+
+// 0000014c <main>:
+  27bdffd8  // 14c:      addiu  sp,sp,-40
+  afb0001c  // 150:      sw     s0,28(sp)
+  24040081  // 154:      li     a0,129
+  3c10007f  // 158:      lui    s0,0x7f
+  afbf0024  // 15c:      sw     ra,36(sp)
+  0c000006  // 160:      jal    18 <leds(int)>
+  afb10020  // 164:      sw     s1,32(sp)
+  00000000  // 168:      jal    28 <delay(int)>
+  36042815  // 16c:      ori    a0,s0,0x2815
+  0c000006  // 170:      jal    18 <leds(int)>
+  24040042  // 174:      li     a0,66
+  00000000  // 178:      jal    28 <delay(int)>
+  36042815  // 17c:      ori    a0,s0,0x2815
+  0c000006  // 180:      jal    18 <leds(int)>
+  24040024  // 184:      li     a0,36
+  00000000  // 188:      jal    28 <delay(int)>
+  36042815  // 18c:      ori    a0,s0,0x2815
+  0c000006  // 190:      jal    18 <leds(int)>
+  24040018  // 194:      li     a0,24
+  00000000  // 198:      jal    28 <delay(int)>
+  36042815  // 19c:      ori    a0,s0,0x2815
+  0c00004c  // 1a0:      jal    130 <wait4event()>
+  00000000  // 1a4:      nop
+  0c000045  // 1a8:      jal    114 <adc_read(int)>
+  24040002  // 1ac:      li     a0,2
+  00022103  // 1b0:      sra    a0,v0,0x4
+  0c000006  // 1b4:      jal    18 <leds(int)>
+  afa20010  // 1b8:      sw     v0,16(sp)
+  8c050000  // 1bc:      lw     a1,0(zero)
+  8c040004  // 1c0:      lw     a0,4(zero)
+  8fa20010  // 1c4:      lw     v0,16(sp)
+  8c030000  // 1c8:      lw     v1,0(zero)
+  8c110004  // 1cc:      lw     s1,4(zero)
+  00a42023  // 1d0:      subu   a0,a1,a0
+  00028083  // 1d4:      sra    s0,v0,0x2
+  02238821  // 1d8:      addu   s1,s1,v1
+  00042083  // 1dc:      sra    a0,a0,0x2
+  02042823  // 1e0:      subu   a1,s0,a0
+  00118883  // 1e4:      sra    s1,s1,0x2
+  0c000019  // 1e8:      jal    64 <eng_13_ctrl(int, int)>
+  02042021  // 1ec:      addu   a0,s0,a0
+  02112821  // 1f0:      addu   a1,s0,s1
+  0c00002f  // 1f4:      jal    bc <eng_24_ctrl(int, int)>
+  02112023  // 1f8:      subu   a0,s0,s1
+  08000068  // 1fc:      j      1a0 <main+0x54>
+  00000000  // 200:      nop
+
