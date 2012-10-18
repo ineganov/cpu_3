@@ -49,7 +49,7 @@ imem imem(   .CLK     ( CLK_MEM    ),
              .MAIN_A  ( INST_ADDR  ), 
              .MAIN_RD ( INST_RD    )); 
 
-dmem dmem( .CLK  ( CLK      ),
+dmem dmem( .CLK  ( CLK_MEM  ),
            .BE   ( DATA_BE  ),
            .WE   ( DATA_WE  ),    
            .ADDR ( DATA_ADDR), 
