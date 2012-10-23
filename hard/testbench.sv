@@ -14,13 +14,13 @@ always
 
 always@ (posedge CLK)
   begin
-  #5ns;
+  #6.66ns;
   CLK_MEM = 1;  
   end
   
 always@ (negedge CLK)
   begin
-  #5ns;
+  #6.66ns;
   CLK_MEM = 0;  
   end
 

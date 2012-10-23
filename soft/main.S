@@ -2,40 +2,47 @@
  
 .org 0
 
-
-.set noreorder
 _start:
-       li	$sp,-1
-       lui	$v0, 0x0000  #0x8000
-       lw	 $v0, 0x10($v0) #1056
-       nop
-       jalr $v0
-       nop
-       nop
-       nop
-       nop
-       j _start
-
-_sstart:
 	li $sp, 255			#init stack pointer
 	li $gp, 0x00000000	#init global pointer
 
-	li $v0, 5
-	li $v1, 7
-	addu $a0, $v1, $v0
-	subu $a1, $v1, $v0
-	
-	.set noreorder
-	j _target
-	lwl $t0, 13
-	.set reorder
-	
-	li $t0, 100
-	li $t1, 200
+	li $v0, 100
+	li $v1, -10
+	li $t0, -20
+	li $t1, 110
 
-_target:
-	sll $a2, $a0, 1
-	sll $a3, $a0, 2
+	slt  $a0, $v1, $v0
+	sltu $a0, $v1, $v0
+	slt  $a0, $t0, $v1
+	slt  $a0, $v0, $t1
+
+	slti $a1, $v0, 99
+	slti $a1, $v0, 101
+
+	slti $a2, $v0, 0
+	slti $a2, $v1, -9
+	slti $a2, $v1, -10
+
+	sltiu $a3, $v0, 0
+	sltiu $a3, $v0, -9
+	sltiu $a3, $v1, -10
+	
+	sw	  $a0, 20
+	add   $a0, $v0, $v1
+	addu  $a0, $v0, $v1
+	sub   $a0, $v0, $v1
+	subu  $a0, $v0, $v1
+	or    $a0, $v0, $v1
+	nor   $a0, $v0, $v1
+	lw	  $a0, 20
+
+	li  $t0, 0xFFFFFFF0
+	li  $t1, 0x0000001F
+	and $t2, $t0, $t1
+	xor $t2, $t0, $t1
+	or  $t2, $t0, $t1
+	nor $t2, $t0, $t1
+
 
 
 _stop:			#loop forever

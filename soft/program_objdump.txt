@@ -5,45 +5,41 @@ main:     file format elf32-bigmips
 Disassembly of section .text:
 
 00000000 <_ftext>:
-   0:	241dffff 	li	sp,-1
-   4:	3c020000 	lui	v0,0x0
-   8:	8c420010 	lw	v0,16(v0)
-   c:	00000000 	nop
-  10:	0040f809 	jalr	v0
-  14:	00000000 	nop
-  18:	00000000 	nop
-  1c:	00000000 	nop
-  20:	00000000 	nop
-  24:	08000000 	j	0 <_ftext>
+   0:	241d00ff 	li	sp,255
+   4:	241c0000 	li	gp,0
+   8:	24020064 	li	v0,100
+   c:	2403fff6 	li	v1,-10
+  10:	2408ffec 	li	t0,-20
+  14:	2409006e 	li	t1,110
+  18:	0062202a 	slt	a0,v1,v0
+  1c:	0062202b 	sltu	a0,v1,v0
+  20:	0103202a 	slt	a0,t0,v1
+  24:	0049202a 	slt	a0,v0,t1
+  28:	28450063 	slti	a1,v0,99
+  2c:	28450065 	slti	a1,v0,101
+  30:	28460000 	slti	a2,v0,0
+  34:	2866fff7 	slti	a2,v1,-9
+  38:	2866fff6 	slti	a2,v1,-10
+  3c:	2c470000 	sltiu	a3,v0,0
+  40:	2c47fff7 	sltiu	a3,v0,-9
+  44:	2c67fff6 	sltiu	a3,v1,-10
+  48:	ac040014 	sw	a0,20(zero)
+  4c:	00432020 	add	a0,v0,v1
+  50:	00432021 	addu	a0,v0,v1
+  54:	00432022 	sub	a0,v0,v1
+  58:	00432023 	subu	a0,v0,v1
+  5c:	00432025 	or	a0,v0,v1
+  60:	00432027 	nor	a0,v0,v1
+  64:	8c040014 	lw	a0,20(zero)
+  68:	2408fff0 	li	t0,-16
+  6c:	2409001f 	li	t1,31
+  70:	01095024 	and	t2,t0,t1
+  74:	01095026 	xor	t2,t0,t1
+  78:	01095025 	or	t2,t0,t1
+  7c:	01095027 	nor	t2,t0,t1
 
-00000028 <_sstart>:
-  28:	241d00ff 	li	sp,255
-  2c:	241c0000 	li	gp,0
-  30:	24020005 	li	v0,5
-  34:	24030007 	li	v1,7
-  38:	00622021 	addu	a0,v1,v0
-  3c:	00622823 	subu	a1,v1,v0
-  40:	08000014 	j	50 <_target>
-  44:	8808000d 	lwl	t0,13(zero)
-  48:	24080064 	li	t0,100
-  4c:	240900c8 	li	t1,200
-
-00000050 <_target>:
-  50:	00043040 	sll	a2,a0,0x1
-  54:	00043880 	sll	a3,a0,0x2
-
-00000058 <_stop>:
-  58:	08000016 	j	58 <_stop>
-  5c:	00000000 	nop
-  60:	00000000 	nop
-  64:	00000000 	nop
-  68:	00000000 	nop
-  6c:	00000000 	nop
-  70:	00000000 	nop
-  74:	00000000 	nop
-  78:	00000000 	nop
-  7c:	00000000 	nop
-  80:	00000000 	nop
+00000080 <_stop>:
+  80:	08000020 	j	80 <_stop>
   84:	00000000 	nop
   88:	00000000 	nop
   8c:	00000000 	nop
